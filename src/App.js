@@ -1,8 +1,10 @@
 import React from "react";
 import "./App.css";
 
-function App() {
-   return <div>Qrwy</div>;
+class App extends React.Component() {
+   render() {
+      return <div>sss</div>;
+   }
 }
 
 export default App;
