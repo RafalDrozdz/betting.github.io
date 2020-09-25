@@ -6,7 +6,8 @@
          "visitors": "Bayern",
          "hostsExchange": 3.25,
          "drawExchange": 4.2,
-         "visitorsExchange": 2.08
+         "visitorsExchange": 2.08,
+         "active": false
       },
       {
          "id": 2,
@@ -14,7 +15,8 @@
          "visitors": "Lyon",
          "hostsExchange": 1.24,
          "drawExchange": 6.9,
-         "visitorsExchange": 12
+         "visitorsExchange": 12,
+         "active": false
       },
       {
          "id": 3,
@@ -22,7 +24,8 @@
          "visitors": "Atl. Madryt",
          "hostsExchange": 3.55,
          "drawExchange": 3.15,
-         "visitorsExchange": 2.33
+         "visitorsExchange": 2.33,
+         "active": false
       },
       {
          "id": 4,
@@ -30,7 +33,8 @@
          "visitors": "Valencia",
          "hostsExchange": 1.7,
          "drawExchange": 4.3,
-         "visitorsExchange": 4.85
+         "visitorsExchange": 4.85,
+         "active": false
       },
       {
          "id": 5,
@@ -38,7 +42,8 @@
          "visitors": "Inter",
          "hostsExchange": 2.17,
          "drawExchange": 3.4,
-         "visitorsExchange": 3.6
+         "visitorsExchange": 3.6,
+         "active": false
       },
       {
          "id": 6,
@@ -46,7 +51,8 @@
          "visitors": "Ajax",
          "hostsExchange": 1.85,
          "drawExchange": 4.03,
-         "visitorsExchange": 4.15
+         "visitorsExchange": 4.15,
+         "active": false
       },
       {
          "id": 7,
@@ -54,7 +60,8 @@
          "visitors": "Napoli",
          "hostsExchange": 1.52,
          "drawExchange": 4.65,
-         "visitorsExchange": 6.5
+         "visitorsExchange": 6.5,
+         "active": false
       },
       {
          "id": 8,
@@ -62,7 +69,8 @@
          "visitors": "Zenit",
          "hostsExchange": 2,
          "drawExchange": 3.83,
-         "visitorsExchange": 3.8
+         "visitorsExchange": 3.8,
+         "active": false
       },
       {
          "id": 9,
@@ -70,7 +78,8 @@
          "visitors": "Leverkusen",
          "hostsExchange": 3.45,
          "drawExchange": 3.65,
-         "visitorsExchange": 2.16
+         "visitorsExchange": 2.16,
+         "active": false
       },
       {
          "id": 10,
@@ -78,7 +87,8 @@
          "visitors": "Real Madryt",
          "hostsExchange": 3.3,
          "drawExchange": 3.85,
-         "visitorsExchange": 2.15
+         "visitorsExchange": 2.15,
+         "active": false
       }
    ]
 }
