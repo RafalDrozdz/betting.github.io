@@ -1,0 +1,84 @@
+{
+   "matches": [
+      {
+         "id": 1,
+         "hosts": "PSG",
+         "visitors": "Bayern",
+         "hostsExchange": 3.25,
+         "drawExchange": 4.2,
+         "visitorsExchange": 2.08
+      },
+      {
+         "id": 2,
+         "hosts": "Manchester City",
+         "visitors": "Lyon",
+         "hostsExchange": 1.24,
+         "drawExchange": 6.9,
+         "visitorsExchange": 12
+      },
+      {
+         "id": 3,
+         "hosts": "RB Lipsk",
+         "visitors": "Atl. Madryt",
+         "hostsExchange": 3.55,
+         "drawExchange": 3.15,
+         "visitorsExchange": 2.33
+      },
+      {
+         "id": 4,
+         "hosts": "Atalanta",
+         "visitors": "Valencia",
+         "hostsExchange": 1.7,
+         "drawExchange": 4.3,
+         "visitorsExchange": 4.85
+      },
+      {
+         "id": 5,
+         "hosts": "Dortmund",
+         "visitors": "Inter",
+         "hostsExchange": 2.17,
+         "drawExchange": 3.4,
+         "visitorsExchange": 3.6
+      },
+      {
+         "id": 6,
+         "hosts": "Chelsea",
+         "visitors": "Ajax",
+         "hostsExchange": 1.85,
+         "drawExchange": 4.03,
+         "visitorsExchange": 4.15
+      },
+      {
+         "id": 7,
+         "hosts": "Liverpool",
+         "visitors": "Napoli",
+         "hostsExchange": 1.52,
+         "drawExchange": 4.65,
+         "visitorsExchange": 6.5
+      },
+      {
+         "id": 8,
+         "hosts": "Benfica",
+         "visitors": "Zenit",
+         "hostsExchange": 2,
+         "drawExchange": 3.83,
+         "visitorsExchange": 3.8
+      },
+      {
+         "id": 9,
+         "hosts": "Lok. Moskwa",
+         "visitors": "Leverkusen",
+         "hostsExchange": 3.45,
+         "drawExchange": 3.65,
+         "visitorsExchange": 2.16
+      },
+      {
+         "id": 10,
+         "hosts": "Club Brugge",
+         "visitors": "Real Madryt",
+         "hostsExchange": 3.3,
+         "drawExchange": 3.85,
+         "visitorsExchange": 2.15
+      }
+   ]
+}
