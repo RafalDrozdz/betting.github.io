@@ -15,6 +15,11 @@ function Match({ match, handleClick }) {
                      match.hostsExchange
                   )
                }
+               className={
+                  match.active && match.type === "hostsExchange"
+                     ? "active"
+                     : null
+               }
             >
                {match.hostsExchange.toFixed(2)}
             </button>
@@ -30,6 +35,11 @@ function Match({ match, handleClick }) {
                      match.drawExchange
                   )
                }
+               className={
+                  match.active && match.type === "drawExchange"
+                     ? "active"
+                     : null
+               }
             >
                {match.drawExchange.toFixed(2)}
             </button>
@@ -44,6 +54,11 @@ function Match({ match, handleClick }) {
                      match.active,
                      match.visitorsExchange
                   )
+               }
+               className={
+                  match.active && match.type === "visitorsExchange"
+                     ? "active"
+                     : null
                }
             >
                {match.visitorsExchange.toFixed(2)}

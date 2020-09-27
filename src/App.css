@@ -7,45 +7,139 @@ body {
    display: flex;
    justify-content: center;
    font-family: sans-serif;
+   background-color: #000;
+   color: #fff;
 }
-.matches {
-   margin: 60px 0;
+.container {
+   margin-top: 100px;
    display: flex;
-   flex-direction: column;
-   align-items: center;
-   text-align: center;
    width: 60vw;
    max-width: 1200px;
-   min-width: 260px;
+   background-color: #222;
+}
+.matches {
+   display: flex;
+   flex-direction: column;
+   flex-basis: 60%;
 }
 .match {
    display: flex;
-   flex-wrap: wrap;
-   width: 100%;
-   background-color: yellow;
-   justify-content: space-around;
-   margin-top: 5px;
+   align-items: center;
+   border: 1px solid #999;
+   border-bottom: 0;
+   padding: 5px 0 0 10px;
+}
+.match:nth-last-child(1) {
+   border-bottom: 1px solid #999;
 }
 .teams-names {
-   flex-basis: 100%;
-   height: 60px;
-   border: 2px solid black;
-   border-radius: 10px;
-   line-height: 60px;
-   font-size: 26px;
+   flex-grow: 1;
 }
 .match div {
    display: flex;
    flex-direction: column;
-   flex-basis: 30%;
-   height: 60px;
-   background-color: yellow;
+   align-items: center;
+   /* margin: 0 5px; */
+   height: 50px;
 }
-.match div span {
-   height: 25px;
-   line-height: 25px;
-}
-.match div button {
+.match button {
+   width: 70px;
    flex-grow: 1;
    cursor: pointer;
+   border: 0;
+   background-color: #3e3e3e;
+   color: #fff;
+   border-right: 1px solid #999;
+}
+.match div:nth-of-type(1) button {
+   border-left: 1px solid #999;
+}
+.match div:nth-last-child(1) button {
+   border-right: 0;
+}
+button:focus {
+   outline: 0;
+}
+button.active {
+   color: #000;
+   background-color: yellow;
+   font-weight: 600;
+}
+.matchesAdd {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   flex-basis: 40%;
+   border: 1px solid #999;
+}
+.box {
+   display: flex;
+   flex-direction: column;
+   width: 90%;
+   flex-basis: 90%;
+   border: 1px solid #999;
+   margin: 10px;
+}
+.type-matches {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   flex-grow: 1;
+}
+.type-matches div {
+   display: flex;
+   align-items: center;
+   margin: 5px;
+   padding: 5px;
+   width: 90%;
+   border: 1px solid #999;
+}
+.box div .names-of-teams {
+   flex-grow: 1;
+}
+.result {
+   border: 1px solid #999;
+   width: 90%;
+   margin: 10px auto;
+   padding: 8px;
+}
+.result .clear {
+   width: 90px;
+}
+.result button {
+   width: 60px;
+   height: 25px;
+   cursor: pointer;
+}
+.result div {
+   display: flex;
+   width: 100%;
+   margin: 3px 0;
+}
+.result .grow {
+   flex-grow: 1;
+}
+.result input {
+   width: 60px;
+   text-align: right;
+}
+.empty {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100px;
+}
+
+header {
+   position: fixed;
+   display: flex;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 40px;
+   background-color: #3e3e3e;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0 20px;
 }
