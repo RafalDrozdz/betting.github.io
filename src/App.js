@@ -191,58 +191,61 @@ class App extends React.Component {
                <span>My money: {this.state.money.toFixed(2)}$</span>
                <button>My cupons</button>
             </header>
-            <div className="container">
-               <div className="matches">{matches}</div>
-               <div className="matchesAdd">
-                  <div className="box">
-                     <div className="type-matches">{matchesAdd}</div>
-                     <div className="result">
-                        {matchesAdd.length > 0 ? (
-                           <>
-                              <div>
-                                 <span className="grow">Exchange:</span>
-                                 <strong>{exchange.toFixed(2)}</strong>
-                              </div>
-                              <div>
-                                 <span className="grow">To pay ($):</span>
-                                 <input
-                                    type="number"
-                                    min="1"
-                                    max={
-                                       this.state.money >= 1
-                                          ? this.state.money
-                                          : 1
-                                    }
-                                    value={this.state.moneyToPay}
-                                    onChange={this.handleChange}
-                                 ></input>
-                              </div>
-                              <div>
-                                 <span className="grow">Possible win:</span>
-                                 <span>
-                                    {`${(
-                                       exchange * this.state.moneyToPay
-                                    ).toFixed(2)} $`}
-                                 </span>
-                              </div>
-                              <div>
-                                 <button
-                                    className="clear"
-                                    onClick={this.clearMatchesAdd}
-                                 >
-                                    Clear coupon
-                                 </button>
-                                 <span className="grow"></span>
-                                 <button onClick={this.addBet}>Bet</button>
-                              </div>
-                           </>
-                        ) : (
-                           <div className="empty">Coupon is empty</div>
-                        )}
+            <main>
+               <div className="container">
+                  <div className="matches">{matches}</div>
+                  <div className="matchesAdd">
+                     <div className="box">
+                        <div className="type-matches">{matchesAdd}</div>
+                        <div className="result">
+                           {matchesAdd.length > 0 ? (
+                              <>
+                                 <div>
+                                    <span className="grow">Exchange:</span>
+                                    <strong>{exchange.toFixed(2)}</strong>
+                                 </div>
+                                 <div>
+                                    <span className="grow">To pay ($):</span>
+                                    <input
+                                       type="number"
+                                       min="1"
+                                       max={
+                                          this.state.money >= 1
+                                             ? this.state.money
+                                             : 1
+                                       }
+                                       value={this.state.moneyToPay}
+                                       onChange={this.handleChange}
+                                    ></input>
+                                 </div>
+                                 <div>
+                                    <span className="grow">Possible win:</span>
+                                    <span>
+                                       {`${(
+                                          exchange * this.state.moneyToPay
+                                       ).toFixed(2)} $`}
+                                    </span>
+                                 </div>
+                                 <div>
+                                    <button
+                                       className="clear"
+                                       onClick={this.clearMatchesAdd}
+                                    >
+                                       Clear coupon
+                                    </button>
+                                    <span className="grow"></span>
+                                    <button onClick={this.addBet}>Bet</button>
+                                 </div>
+                              </>
+                           ) : (
+                              <div className="empty">Coupon is empty</div>
+                           )}
+                        </div>
                      </div>
                   </div>
                </div>
-            </div>
+            </main>
+            <footer>Rafał Drożdż</footer>
          </>
       );
    }

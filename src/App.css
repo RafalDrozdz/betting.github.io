@@ -4,11 +4,16 @@
    box-sizing: border-box;
 }
 body {
-   display: flex;
-   justify-content: center;
    font-family: sans-serif;
    background-color: #000;
    color: #fff;
+   min-height: 100vh;
+}
+#root {
+   display: flex;
+   flex-direction: column;
+   height: 100vh;
+   width: 100vw;
 }
 .container {
    margin-top: 100px;
@@ -141,5 +146,19 @@ header {
    background-color: #3e3e3e;
    justify-content: space-between;
    align-items: center;
+   padding: 0 20px;
+}
+main {
+   width: 100vw;
+   display: flex;
+   justify-content: center;
+   align-items: flex-start;
+   flex-grow: 1;
+}
+footer {
+   display: flex;
+   flex-basis: 60px;
+   align-items: center;
+   background-color: #3e3e3e;
    padding: 0 20px;
 }
