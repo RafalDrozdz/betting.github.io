@@ -1,17 +1,20 @@
 import React from "react";
+import { Route, Link, Switch, BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
-import Match from "./Match";
-import MatchAdd from "./MatchAdd";
+import Main from "./Main";
+import Coupons from "./Coupons";
 
 class App extends React.Component {
    state = {
       matches: [],
       matchesAdd: [],
       coupons: [],
+      results: [],
       money: 100,
       moneyToPay: 1,
    };
-   handleClick = (id, type, active, exchange) => {
+
+   handleClick = (id, tip, active, odds) => {
       let matches = [...this.state.matches];
       let matchesAdd = [...this.state.matchesAdd];
       if (!active) {
@@ -20,12 +23,12 @@ class App extends React.Component {
                .filter((item) => item.id === id && !item.active)
                .map(
                   (item) =>
-                     (item = item = {
+                     (item = {
                         id: item.id,
                         hosts: item.hosts,
                         visitors: item.visitors,
-                        exchange: item[type],
-                        type,
+                        odds,
+                        tip,
                      })
                )
          );
@@ -41,18 +44,18 @@ class App extends React.Component {
                            id: item.id,
                            hosts: item.hosts,
                            visitors: item.visitors,
-                           hostsExchange: item.hostsExchange,
-                           drawExchange: item.drawExchange,
-                           visitorsExchange: item.visitorsExchange,
+                           hostsOdds: item.hostsOdds,
+                           drawOdds: item.drawOdds,
+                           visitorsOdds: item.visitorsOdds,
                            active: true,
-                           type,
+                           tip,
                         })
                   )
             );
       } else if (active) {
          if (
-            type ===
-            matchesAdd[matchesAdd.findIndex((item) => item.id === id)].type
+            tip ===
+            matchesAdd[matchesAdd.findIndex((item) => item.id === id)].tip
          ) {
             matchesAdd.splice(
                matchesAdd.findIndex((item) => item.id === id),
@@ -69,11 +72,11 @@ class App extends React.Component {
                               id: item.id,
                               hosts: item.hosts,
                               visitors: item.visitors,
-                              hostsExchange: item.hostsExchange,
-                              drawExchange: item.drawExchange,
-                              visitorsExchange: item.visitorsExchange,
+                              hostsOdds: item.hostsOdds,
+                              drawOdds: item.drawOdds,
+                              visitorsOdds: item.visitorsOdds,
                               active: false,
-                              type,
+                              tip,
                            })
                      )
                );
@@ -89,11 +92,11 @@ class App extends React.Component {
                               id: item.id,
                               hosts: item.hosts,
                               visitors: item.visitors,
-                              hostsExchange: item.hostsExchange,
-                              drawExchange: item.drawExchange,
-                              visitorsExchange: item.visitorsExchange,
+                              hostsOdds: item.hostsOdds,
+                              drawOdds: item.drawOdds,
+                              visitorsOdds: item.visitorsOdds,
                               active: true,
-                              type,
+                              tip,
                            })
                      )
                );
@@ -106,17 +109,18 @@ class App extends React.Component {
                   .filter((item) => item.id === id)
                   .map(
                      (item) =>
-                        (item = item = {
+                        (item = {
                            id: item.id,
                            hosts: item.hosts,
                            visitors: item.visitors,
-                           exchange: item[type],
-                           type,
+                           odds,
+                           tip,
                         })
                   )
             );
          }
       }
+
       matches.sort((a, b) => {
          return a.id - b.id;
       });
@@ -143,18 +147,149 @@ class App extends React.Component {
    };
 
    addBet = () => {
+      let odds = 1;
+      for (const item of [...this.state.matchesAdd]) {
+         odds *= item.odds;
+      }
+
       const { money, moneyToPay } = this.state;
       if (money >= moneyToPay && moneyToPay >= 1) {
          const coupons = [...this.state.coupons];
          coupons.push({
             matchAdd: [...this.state.matchesAdd],
             moneyToPay,
+            odds,
+            moneyToWin: this.state.moneyToPay * odds * 0.88,
          });
          this.setState({
             coupons,
             money: money - moneyToPay,
          });
          this.clearMatchesAdd();
+      }
+   };
+
+   checkResult = () => {
+      let coupons = [...this.state.coupons];
+      for (let i = 0; i < coupons.length; i++) {
+         const stateResults = [...this.state.results];
+         let results = [];
+         
+   
+      for (let a = 0; a < stateResults.length; a++) {
+         
+         results = results.concat(
+            stateResults[stateResults.findIndex(item => item.id===coupons[i].matchAdd[a < coupons[i].matchAdd.length? a: coupons[i].matchAdd.length -1].id)]
+         )
+         
+         
+         if (
+            coupons[i].matchAdd[a < coupons[i].matchAdd.length? a: coupons[i].matchAdd.length -1].tip === results[a < coupons[i].matchAdd.length? a: coupons[i].matchAdd.length -1].result
+         ) {
+            coupons[i].matchAdd[a < coupons[i].matchAdd.length? a: coupons[i].matchAdd.length -1].active = true;
+         } else{
+            coupons[i].matchAdd[a < coupons[i].matchAdd.length? a: coupons[i].matchAdd.length -1].active = false;
+         }
+      }
+      // results.length = coupons[i].matchAdd.length
+      // console.log(results);
+      console.log(coupons[i].matchAdd);
+      this.setState({
+         coupons,
+      });
+   }
+      
+   };
+
+   generateScoors = () => {
+      const win = [
+         "1:0",
+         "2:0",
+         "3:0",
+         "4:0",
+         "5:0",
+         "2:1",
+         "3:1",
+         "3:2",
+         "4:1",
+         "4:2",
+         "4:3",
+         "5:1",
+         "5:2",
+         "5:3",
+         "5:4",
+      ];
+      const draw = ["0:0", "1:1", "2:2", "3:3", "4:4", "5:5"];
+      const loss = [
+         "0:1",
+         "0:2",
+         "0:3",
+         "0:4",
+         "0:5",
+         "1:2",
+         "1:3",
+         "2:3",
+         "1:4",
+         "2:4",
+         "3:4",
+         "1:5",
+         "2:5",
+         "3:5",
+         "4:5",
+      ];
+      let matches = [...this.state.matches];
+      const results = matches.map((item) => {
+         const hostsChance = Math.floor(
+            (item.visitorsOdds /
+               (item.hostsOdds + item.drawOdds + item.visitorsOdds)) *
+               100
+         );
+         const drawChance = Math.floor(
+            (item.drawOdds /
+               (item.hostsOdds + item.drawOdds + item.visitorsOdds)) *
+               100
+         );
+         const visitorsChance = Math.floor(
+            (item.hostsOdds /
+               (item.hostsOdds + item.drawOdds + item.visitorsOdds)) *
+               100
+         );
+
+         const random = Math.floor(
+            Math.random() * (hostsChance + drawChance + visitorsChance)
+         );
+         let result = null;
+         if (random <= hostsChance) {
+            result = {
+               score: win[Math.floor(Math.random() * win.length)],
+               result: 1,
+               id: item.id,
+               hosts: item.hosts,
+               visitors: item.visitors,
+            };
+         } else if (random <= hostsChance + drawChance) {
+            result = {
+               score: draw[Math.floor(Math.random() * draw.length)],
+               result: 0,
+               id: item.id,
+               hosts: item.hosts,
+               visitors: item.visitors,
+            };
+         } else if (random <= hostsChance + drawChance + visitorsChance) {
+            result = {
+               score: loss[Math.floor(Math.random() * loss.length)],
+               result: 2,
+               id: item.id,
+               hosts: item.hosts,
+               visitors: item.visitors,
+            };
+         }
+         return result;
+      });
+      if (this.state.results.length < 1) {
+         this.setState({
+            results,
+         });
       }
    };
 
@@ -165,90 +300,101 @@ class App extends React.Component {
             this.setState({
                matches: data.matches,
             });
+
+            this.generateScoors();
          });
    }
    render() {
-      let matches = [...this.state.matches];
-      matches = matches.map((item) => (
-         <Match key={item.id} match={item} handleClick={this.handleClick} />
-      ));
-      let matchesAdd = [...this.state.matchesAdd];
-      let exchange = 1;
-
-      for (const item of matchesAdd) {
-         exchange *= item.exchange;
+      const { matches, matchesAdd, coupons, money, moneyToPay } = this.state;
+      let odds = 1;
+      for (const item of [...this.state.matchesAdd]) {
+         odds *= item.odds;
       }
-      matchesAdd.sort((a, b) => {
-         return a.id - b.id;
-      });
-      matchesAdd = matchesAdd.map((item) => (
-         <MatchAdd key={item.id} item={item} />
-      ));
-
+      const moneyToWin = this.state.moneyToPay * odds * 0.88;
       return (
          <>
-            <header>
-               <span>My money: {this.state.money.toFixed(2)}$</span>
-               <button>My cupons</button>
-            </header>
-            <main>
-               <div className="container">
-                  <div className="matches">{matches}</div>
-                  <div className="matchesAdd">
-                     <div className="box">
-                        <div className="type-matches">{matchesAdd}</div>
-                        <div className="result">
-                           {matchesAdd.length > 0 ? (
-                              <>
-                                 <div>
-                                    <span className="grow">Exchange:</span>
-                                    <strong>{exchange.toFixed(2)}</strong>
-                                 </div>
-                                 <div>
-                                    <span className="grow">To pay ($):</span>
-                                    <input
-                                       type="number"
-                                       min="1"
-                                       max={
-                                          this.state.money >= 1
-                                             ? this.state.money
-                                             : 1
-                                       }
-                                       value={this.state.moneyToPay}
-                                       onChange={this.handleChange}
-                                    ></input>
-                                 </div>
-                                 <div>
-                                    <span className="grow">Possible win:</span>
-                                    <span>
-                                       {`${(
-                                          exchange * this.state.moneyToPay
-                                       ).toFixed(2)} $`}
-                                    </span>
-                                 </div>
-                                 <div>
-                                    <button
-                                       className="clear"
-                                       onClick={this.clearMatchesAdd}
-                                    >
-                                       Clear coupon
-                                    </button>
-                                    <span className="grow"></span>
-                                    <button onClick={this.addBet}>Bet</button>
-                                 </div>
-                              </>
-                           ) : (
-                              <div className="empty">Coupon is empty</div>
-                           )}
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </main>
-            <footer>Rafał Drożdż</footer>
+            <Router>
+               <header>
+                  <span>My money: {this.state.money.toFixed(2)}$</span>
+                  <Route exact path="/">
+                     <Link to="/coupons">My cupons</Link>
+                  </Route>
+                  <Route exact path="/coupons">
+                     <Link to="/">Back</Link>
+                  </Route>
+               </header>
+               <Switch>
+                  <Route
+                     exact
+                     path="/"
+                     render={() => (
+                        <Main
+                           matches={matches}
+                           matchesAdd={matchesAdd}
+                           coupons={coupons}
+                           money={money}
+                           moneyToPay={moneyToPay}
+                           handleClick={this.handleClick}
+                           clearMatchesAdd={this.clearMatchesAdd}
+                           handleChange={this.handleChange}
+                           addBet={this.addBet}
+                           odds={odds}
+                           moneyToWin={moneyToWin}
+                        />
+                     )}
+                  />
+                  <Route
+                     exact
+                     path="/coupons"
+                     render={() => (
+                        <Coupons
+                           matches={matches}
+                           coupons={coupons}
+                           money={money}
+                           checkResult={this.checkResult}
+                        />
+                     )}
+                  />
+               </Switch>
+               <footer>Rafał Drożdż</footer>
+            </Router>
          </>
       );
    }
 }
 
 export default App;
+
+// let stateResults = [...this.state.results];
+//          let winnings = [];
+//          let matchAdd = [...coupons[i].matchAdd];
+//          console.log(matchAdd);
+//          for (let a = 0; a < matchAdd.length; a++) {
+//             winnings = winnings.concat(
+//                stateResults.filter((item) => item.result === matchAdd[a].tip)
+//             );
+//          }
+//          console.log(stateResults);
+//          if (winnings.length > 10) {
+//             winnings.length = winnings.length / 10;
+//          }
+
+//          for (let a = 0; a < matchAdd.length; a++) {
+//             matchAdd = matchAdd
+//                .filter((item) => item.id === winnings[a].id)
+//                .map(
+//                   (item) =>
+//                      (item = {
+//                         id: item.id,
+//                         hosts: item.hosts,
+//                         visitors: item.visitors,
+//                         tip: item.tip,
+//                         odds: 3.25,
+//                         active: true,
+//                      })
+//                );
+//          }
+
+//          console.log(winnings);
+//          console.log(matchAdd);
+//

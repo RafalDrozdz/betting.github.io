@@ -8,60 +8,33 @@ function Match({ match, handleClick }) {
             <span>1</span>
             <button
                onClick={() =>
-                  handleClick(
-                     match.id,
-                     "hostsExchange",
-                     match.active,
-                     match.hostsExchange
-                  )
+                  handleClick(match.id, 1, match.active, match.hostsOdds)
                }
-               className={
-                  match.active && match.type === "hostsExchange"
-                     ? "active"
-                     : null
-               }
+               className={match.active && match.tip === 1 ? "active" : null}
             >
-               {match.hostsExchange.toFixed(2)}
+               {match.hostsOdds.toFixed(2)}
             </button>
          </div>
          <div>
             <span>0</span>
             <button
                onClick={() =>
-                  handleClick(
-                     match.id,
-                     "drawExchange",
-                     match.active,
-                     match.drawExchange
-                  )
+                  handleClick(match.id, 0, match.active, match.drawOdds)
                }
-               className={
-                  match.active && match.type === "drawExchange"
-                     ? "active"
-                     : null
-               }
+               className={match.active && match.tip === 0 ? "active" : null}
             >
-               {match.drawExchange.toFixed(2)}
+               {match.drawOdds.toFixed(2)}
             </button>
          </div>
          <div>
             <span>2</span>
             <button
                onClick={() =>
-                  handleClick(
-                     match.id,
-                     "visitorsExchange",
-                     match.active,
-                     match.visitorsExchange
-                  )
+                  handleClick(match.id, 2, match.active, match.visitorsOdds)
                }
-               className={
-                  match.active && match.type === "visitorsExchange"
-                     ? "active"
-                     : null
-               }
+               className={match.active && match.tip === 2 ? "active" : null}
             >
-               {match.visitorsExchange.toFixed(2)}
+               {match.visitorsOdds.toFixed(2)}
             </button>
          </div>
       </div>

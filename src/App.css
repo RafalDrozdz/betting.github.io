@@ -16,7 +16,7 @@ body {
    width: 100vw;
 }
 .container {
-   margin-top: 100px;
+   margin: 100px 0;
    display: flex;
    width: 60vw;
    max-width: 1200px;
@@ -161,4 +161,38 @@ footer {
    align-items: center;
    background-color: #3e3e3e;
    padding: 0 20px;
+}
+.coupons .container {
+   flex-direction: column;
+   flex-basis: 30vw;
+   border: 1px solid #fff;
+   padding: 20px;
+}
+.coupon {
+   display: flex;
+   flex-direction: column;
+   margin: 5px;
+   border: 1px solid #fff;
+   padding: 5px;
+}
+.coupon .element {
+   display: flex;
+   flex-direction: column;
+}
+.coupon .element div {
+   display: flex;
+   justify-content: space-between;
+}
+.coupon .summary {
+   margin-top: 10px;
+   display: flex;
+   flex-direction: column;
+}
+.coupon .summary div {
+   display: flex;
+   justify-content: flex-end;
+   width: 100%;
+}
+.coupon .summary div span {
+   margin-left: 10px;
 }
