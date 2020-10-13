@@ -21,6 +21,23 @@ body {
    width: 60vw;
    max-width: 1200px;
    background-color: #222;
+   justify-content: space-between;
+}
+.check-result {
+   margin-top: 8px;
+   align-self: flex-end;
+   width: 120px;
+   height: 50px;
+   cursor: pointer;
+   border-radius: 10px;
+   background-color: transparent;
+   border: 1px solid #fff;
+   color: #fff;
+   transition: 0.4s;
+}
+.check-result:hover {
+   background-color: #fff;
+   color: #000;
 }
 .matches {
    display: flex;
@@ -100,32 +117,35 @@ button.active {
    width: 90%;
    border: 1px solid #999;
 }
+.box div .check {
+   display: none;
+}
 .box div .names-of-teams {
    flex-grow: 1;
 }
-.result {
+.main .summary {
    border: 1px solid #999;
    width: 90%;
    margin: 10px auto;
    padding: 8px;
 }
-.result .clear {
+.main .summary .clear {
    width: 90px;
 }
-.result button {
+.main .summary button {
    width: 60px;
    height: 25px;
    cursor: pointer;
 }
-.result div {
+.main .summary div {
    display: flex;
    width: 100%;
    margin: 3px 0;
 }
-.result .grow {
+.main .summary .grow {
    flex-grow: 1;
 }
-.result input {
+.main .summary input {
    width: 60px;
    text-align: right;
 }
@@ -167,6 +187,19 @@ footer {
    flex-basis: 30vw;
    border: 1px solid #fff;
    padding: 20px;
+   min-height: 240px;
+}
+.no-coupons {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   flex-grow: 1;
+}
+.container .result {
+   display: flex;
+   justify-content: space-between;
+   border-bottom: 1px solid #999;
 }
 .coupon {
    display: flex;
@@ -181,7 +214,13 @@ footer {
 }
 .coupon .element div {
    display: flex;
-   justify-content: space-between;
+   /* justify-content: space-between; */
+}
+.coupon .element span:first-child {
+   flex-grow: 1;
+}
+.coupon .element span:last-child {
+   margin-left: 10px;
 }
 .coupon .summary {
    margin-top: 10px;

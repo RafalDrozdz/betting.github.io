@@ -1,8 +1,10 @@
 import React from "react";
-import { Route, Link, Switch, BrowserRouter as Router } from "react-router-dom";
+import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import Main from "./Main";
 import Coupons from "./Coupons";
+import Header from "./Header"
+
 
 class App extends React.Component {
    state = {
@@ -12,6 +14,7 @@ class App extends React.Component {
       results: [],
       money: 100,
       moneyToPay: 1,
+      checkFlag: false,
    };
 
    handleClick = (id, tip, active, odds) => {
@@ -147,57 +150,61 @@ class App extends React.Component {
    };
 
    addBet = () => {
-      let odds = 1;
-      for (const item of [...this.state.matchesAdd]) {
-         odds *= item.odds;
-      }
+      if(!this.state.checkFlag){
+         let odds = 1;
+         for (const item of [...this.state.matchesAdd]) {
+            odds *= item.odds;
+         }
 
-      const { money, moneyToPay } = this.state;
-      if (money >= moneyToPay && moneyToPay >= 1) {
-         const coupons = [...this.state.coupons];
-         coupons.push({
-            matchAdd: [...this.state.matchesAdd],
-            moneyToPay,
-            odds,
-            moneyToWin: this.state.moneyToPay * odds * 0.88,
-         });
-         this.setState({
-            coupons,
-            money: money - moneyToPay,
-         });
-         this.clearMatchesAdd();
-      }
+         const { money, moneyToPay } = this.state;
+         if (money >= moneyToPay && moneyToPay >= 1) {
+            const coupons = [...this.state.coupons];
+            coupons.push({
+               matchAdd: [...this.state.matchesAdd],
+               moneyToPay,
+               odds,
+               moneyToWin: this.state.moneyToPay * odds * 0.88,
+            });
+            this.setState({
+               coupons,
+               money: money - moneyToPay,
+            });
+            this.clearMatchesAdd();
+         }
+   }
+   else{
+      alert("You check results")
+   }
    };
 
    checkResult = () => {
-      let coupons = [...this.state.coupons];
-      for (let i = 0; i < coupons.length; i++) {
-         const stateResults = [...this.state.results];
-         let results = [];
-         
-   
-      for (let a = 0; a < stateResults.length; a++) {
-         
-         results = results.concat(
-            stateResults[stateResults.findIndex(item => item.id===coupons[i].matchAdd[a < coupons[i].matchAdd.length? a: coupons[i].matchAdd.length -1].id)]
-         )
-         
-         
-         if (
-            coupons[i].matchAdd[a < coupons[i].matchAdd.length? a: coupons[i].matchAdd.length -1].tip === results[a < coupons[i].matchAdd.length? a: coupons[i].matchAdd.length -1].result
-         ) {
-            coupons[i].matchAdd[a < coupons[i].matchAdd.length? a: coupons[i].matchAdd.length -1].active = true;
-         } else{
-            coupons[i].matchAdd[a < coupons[i].matchAdd.length? a: coupons[i].matchAdd.length -1].active = false;
+         let coupons = [...this.state.coupons];
+         for (let i = 0; i < coupons.length; i++) {
+            const stateResults = [...this.state.results];
+            let results = [];
+            
+      
+         for (let a = 0; a < stateResults.length; a++) {
+            
+            results = results.concat(
+               stateResults[stateResults.findIndex(item => item.id===coupons[i].matchAdd[a < coupons[i].matchAdd.length? a: coupons[i].matchAdd.length -1].id)]
+            )
+            
+            
+            if (
+               coupons[i].matchAdd[a < coupons[i].matchAdd.length? a: coupons[i].matchAdd.length -1].tip === results[a < coupons[i].matchAdd.length? a: coupons[i].matchAdd.length -1].result
+            ) {
+               coupons[i].matchAdd[a < coupons[i].matchAdd.length? a: coupons[i].matchAdd.length -1].active = true;
+            } else{
+               coupons[i].matchAdd[a < coupons[i].matchAdd.length? a: coupons[i].matchAdd.length -1].active = false;
+            }
          }
+         this.setState({
+            coupons,
+            checkFlag: true,
+         }); 
       }
-      // results.length = coupons[i].matchAdd.length
-      // console.log(results);
-      console.log(coupons[i].matchAdd);
-      this.setState({
-         coupons,
-      });
-   }
+   
       
    };
 
@@ -305,7 +312,7 @@ class App extends React.Component {
          });
    }
    render() {
-      const { matches, matchesAdd, coupons, money, moneyToPay } = this.state;
+      const { matches, matchesAdd, coupons, money, moneyToPay, checkFlag, results} = this.state;
       let odds = 1;
       for (const item of [...this.state.matchesAdd]) {
          odds *= item.odds;
@@ -314,15 +321,7 @@ class App extends React.Component {
       return (
          <>
             <Router>
-               <header>
-                  <span>My money: {this.state.money.toFixed(2)}$</span>
-                  <Route exact path="/">
-                     <Link to="/coupons">My cupons</Link>
-                  </Route>
-                  <Route exact path="/coupons">
-                     <Link to="/">Back</Link>
-                  </Route>
-               </header>
+               <Header money={this.state.money}/>
                <Switch>
                   <Route
                      exact
@@ -340,6 +339,7 @@ class App extends React.Component {
                            addBet={this.addBet}
                            odds={odds}
                            moneyToWin={moneyToWin}
+                           checkFlag={checkFlag}
                         />
                      )}
                   />
@@ -352,11 +352,13 @@ class App extends React.Component {
                            coupons={coupons}
                            money={money}
                            checkResult={this.checkResult}
+                           checkFlag={checkFlag}
+                           results={results}
                         />
                      )}
                   />
                </Switch>
-               <footer>Rafał Drożdż</footer>
+               <footer>Rafał Drożdż </footer>
             </Router>
          </>
       );

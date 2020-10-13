@@ -1,19 +1,15 @@
 import React from "react";
-
-function MatchAdd({ item }) {
-   // function TypeOfTip() {
-   //    if (item.tip === "hostsOdds") return 1;
-   //    else if (item.tip === "drawOdds") return 0;
-   //    else if (item.tip === "visitorsOdds") return 2;
-   // }
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
+function MatchAdd({ item, display, checkFlag }) {
+ 
    return (
       <div>
          <span className="names-of-teams">{`${item.hosts} - ${item.visitors}`}</span>
          <span className="types">{`${item.tip} - ${item.odds.toFixed(
             2
          )}`}</span>
-         {/* <span>{item.active ? `*` : `X`}</span> */}
+         <span style={display && checkFlag ? {display: "block"} : {display: "none"}}>{item.active ? <FontAwesomeIcon icon={faCheckCircle} style={{color: "green"}}/> : <FontAwesomeIcon icon={faTimesCircle} style={{color: "red"}}/>}</span>
       </div>
    );
 }

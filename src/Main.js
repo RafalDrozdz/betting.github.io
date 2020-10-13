@@ -12,16 +12,16 @@ const Main = (props) => {
       return a.id - b.id;
    });
    matchesAdd = matchesAdd.map((item) => (
-      <MatchAdd key={item.id} item={item} />
+      <MatchAdd key={item.id} item={item} display={false}/>
    ));
    return (
-      <main>
+      <main className="main">
          <div className="container">
             <div className="matches">{matches}</div>
             <div className="matchesAdd">
                <div className="box">
                   <div className="type-matches">{matchesAdd}</div>
-                  <div className="result">
+                  <div className="summary">
                      {matchesAdd.length > 0 ? (
                         <>
                            <div>
