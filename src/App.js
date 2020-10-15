@@ -337,7 +337,7 @@ class App extends React.Component {
       const moneyToWin = this.state.moneyToPay * odds * 0.88;
       return (
          <>
-            <Router>
+            <Router basename={process.env.PUBLIC_URL}>
                <Header money={this.state.money}/>
                <Switch>
                   <Route
