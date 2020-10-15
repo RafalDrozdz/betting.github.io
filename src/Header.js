@@ -6,10 +6,10 @@ function Header({ money }) {
     <header>
         <span>My money: {money.toFixed(2)}$</span>
             <Route exact path="/">
-                <Link to="/coupons">My cupons</Link>
+                <Link to="/coupons" className="change-site">My cupons</Link>
             </Route>
             <Route exact path="/coupons">
-                <Link to="/">Back</Link>
+                <Link to="/" className="change-site">Back</Link>
             </Route>
     </header>
    );

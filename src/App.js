@@ -205,9 +205,26 @@ class App extends React.Component {
          }); 
       }
    
-      
+      this.addMoney();
    };
 
+   addMoney = () => {
+      const coupons = [...this.state.coupons];
+      for(let i=0; i<coupons.length; i++){
+         let checkArray = [];
+         checkArray = coupons[i].matchAdd.filter(item => item.active===true)
+         
+         if(checkArray.length===coupons[i].matchAdd.length){
+            this.setState((prevstate) => {
+               return {
+                  money: prevstate.money + coupons[i].moneyToWin
+               }
+               
+            })
+         
+      }
+   }
+   };
    generateScoors = () => {
       const win = [
          "1:0",

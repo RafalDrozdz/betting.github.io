@@ -1,10 +1,11 @@
 import React from "react";
 import MatchAdd from "./MatchAdd";
+import Coupon from "./Coupon"
 
 const Coupons = (props) => {
    const results = [...props.results].map(item => {
       return(
-         <div className="result">
+         <div className="result" key={item.id}>
             <span className="names-of-teams">{`${item.hosts} - ${item.visitors}`}</span>
             <span className="types">{item.score}</span>
          </div>)
@@ -15,29 +16,7 @@ const Coupons = (props) => {
          return <MatchAdd key={item.id} item={item} display={true} checkFlag={props.checkFlag}/>;
       });
       return (
-         <div className="coupon">
-            <div className="element">{coupon}</div>
-            <div className="summary">
-               <div>
-                  <span>Overall odds: </span>
-                  <span>
-                     <strong>{item.odds.toFixed(2)}</strong>
-                  </span>
-               </div>
-               <div>
-                  <span>Stake: </span>
-                  <span>
-                     <strong>{item.moneyToPay}$</strong>
-                  </span>
-               </div>
-               <div>
-                  <span>Possible win: </span>
-                  <span>
-                     <strong>{item.moneyToWin.toFixed(2)}$</strong>
-                  </span>
-               </div>
-            </div>
-         </div>
+         <Coupon coupon={coupon} odds={item.odds} moneyToPay={item.moneyToPay} moneyToWin={item.moneyToWin}/>
       );
    });
 

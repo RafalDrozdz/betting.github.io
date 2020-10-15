@@ -4,6 +4,7 @@ function Match({ match, handleClick }) {
    return (
       <div className="match" id={match.id}>
          <span className="teams-names">{`${match.hosts} - ${match.visitors}`}</span>
+         <div className="tips">
          <div>
             <span>1</span>
             <button
@@ -36,6 +37,7 @@ function Match({ match, handleClick }) {
             >
                {match.visitorsOdds.toFixed(2)}
             </button>
+         </div>
          </div>
       </div>
    );

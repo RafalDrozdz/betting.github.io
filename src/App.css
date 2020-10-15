@@ -34,8 +34,23 @@ body {
    border: 1px solid #fff;
    color: #fff;
    transition: 0.4s;
+   font-size: 15px;
+   font-weight: 700;
 }
-.check-result:hover {
+.change-site {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100px;
+   height: 30px;
+   border-radius: 10px;
+   border: 1px solid #fff;
+   color: #fff;
+   text-decoration: none;
+   transition: 0.4s;
+}
+.check-result:hover,
+.change-site:hover {
    background-color: #fff;
    color: #000;
 }
@@ -47,17 +62,18 @@ body {
 .match {
    display: flex;
    align-items: center;
+   justify-content: space-between;
    border: 1px solid #999;
    border-bottom: 0;
    padding: 5px 0 0 10px;
 }
+.match .tips {
+   display: flex;
+}
 .match:nth-last-child(1) {
    border-bottom: 1px solid #999;
 }
-.teams-names {
-   flex-grow: 1;
-}
-.match div {
+.tips div {
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -167,6 +183,7 @@ header {
    justify-content: space-between;
    align-items: center;
    padding: 0 20px;
+   border-bottom: 1px solid #fff;
 }
 main {
    width: 100vw;
@@ -178,6 +195,7 @@ main {
 footer {
    display: flex;
    flex-basis: 60px;
+   flex-shrink: 0;
    align-items: center;
    background-color: #3e3e3e;
    padding: 0 20px;
@@ -234,4 +252,41 @@ footer {
 }
 .coupon .summary div span {
    margin-left: 10px;
+}
+@media (max-width: 1024px) {
+   .main .container {
+      flex-direction: column;
+      width: 90vw;
+   }
+   .match {
+      flex-direction: column;
+      padding: 0;
+   }
+   .match .tips {
+      width: 100%;
+   }
+   .match .tips div {
+      flex-grow: 1;
+   }
+   .match .tips div button {
+      width: 100%;
+   }
+   .match .tips div:nth-of-type(1) button {
+      border-left: 0;
+   }
+   .coupons {
+      margin: 100px 0 30px 0;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+   }
+   .coupons .container {
+      margin: 0;
+      width: 90%;
+      min-width: 260px;
+      flex-basis: auto;
+   }
+   .coupons .container:last-child {
+      border-top: 0;
+   }
 }
