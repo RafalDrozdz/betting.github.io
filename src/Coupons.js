@@ -11,12 +11,12 @@ const Coupons = (props) => {
          </div>)
          }
       )
-   const coupons = [...props.coupons].map((item) => {
+   const coupons = [...props.coupons].map((item, index) => {
       const coupon = item.matchAdd.map((item) => {
          return <MatchAdd key={item.id} item={item} display={true} checkFlag={props.checkFlag}/>;
       });
       return (
-         <Coupon coupon={coupon} odds={item.odds} moneyToPay={item.moneyToPay} moneyToWin={item.moneyToWin}/>
+         <Coupon key={index}  coupon={coupon} odds={item.odds} moneyToPay={item.moneyToPay} moneyToWin={item.moneyToWin}/>
       );
    });
 
