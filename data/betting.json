@@ -1,0 +1,94 @@
+{
+   "matches": [
+      {
+         "id": 1,
+         "hosts": "PSG",
+         "visitors": "Bayern",
+         "hostsOdds": 3.25,
+         "drawOdds": 4.2,
+         "visitorsOdds": 2.08,
+         "active": false
+      },
+      {
+         "id": 2,
+         "hosts": "Manchester City",
+         "visitors": "Lyon",
+         "hostsOdds": 1.24,
+         "drawOdds": 6.9,
+         "visitorsOdds": 12,
+         "active": false
+      },
+      {
+         "id": 3,
+         "hosts": "RB Lipsk",
+         "visitors": "Atl. Madryt",
+         "hostsOdds": 3.55,
+         "drawOdds": 3.15,
+         "visitorsOdds": 2.33,
+         "active": false
+      },
+      {
+         "id": 4,
+         "hosts": "Atalanta",
+         "visitors": "Valencia",
+         "hostsOdds": 1.7,
+         "drawOdds": 4.3,
+         "visitorsOdds": 4.85,
+         "active": false
+      },
+      {
+         "id": 5,
+         "hosts": "Dortmund",
+         "visitors": "Inter",
+         "hostsOdds": 2.17,
+         "drawOdds": 3.4,
+         "visitorsOdds": 3.6,
+         "active": false
+      },
+      {
+         "id": 6,
+         "hosts": "Chelsea",
+         "visitors": "Ajax",
+         "hostsOdds": 1.85,
+         "drawOdds": 4.03,
+         "visitorsOdds": 4.15,
+         "active": false
+      },
+      {
+         "id": 7,
+         "hosts": "Liverpool",
+         "visitors": "Napoli",
+         "hostsOdds": 1.52,
+         "drawOdds": 4.65,
+         "visitorsOdds": 6.5,
+         "active": false
+      },
+      {
+         "id": 8,
+         "hosts": "Benfica",
+         "visitors": "Zenit",
+         "hostsOdds": 2,
+         "drawOdds": 3.83,
+         "visitorsOdds": 3.8,
+         "active": false
+      },
+      {
+         "id": 9,
+         "hosts": "Lok. Moskwa",
+         "visitors": "Leverkusen",
+         "hostsOdds": 3.45,
+         "drawOdds": 3.65,
+         "visitorsOdds": 2.16,
+         "active": false
+      },
+      {
+         "id": 10,
+         "hosts": "Club Brugge",
+         "visitors": "Real Madryt",
+         "hostsOdds": 3.3,
+         "drawOdds": 3.85,
+         "visitorsOdds": 2.15,
+         "active": false
+      }
+   ]
+}

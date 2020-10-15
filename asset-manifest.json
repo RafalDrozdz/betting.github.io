@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/betting.github.io/static/css/main.bb355e88.chunk.css",
+    "main.js": "/betting.github.io/static/js/main.ab74891a.chunk.js",
+    "main.js.map": "/betting.github.io/static/js/main.ab74891a.chunk.js.map",
+    "runtime-main.js": "/betting.github.io/static/js/runtime-main.1950214d.js",
+    "runtime-main.js.map": "/betting.github.io/static/js/runtime-main.1950214d.js.map",
+    "static/js/2.d7eca630.chunk.js": "/betting.github.io/static/js/2.d7eca630.chunk.js",
+    "static/js/2.d7eca630.chunk.js.map": "/betting.github.io/static/js/2.d7eca630.chunk.js.map",
+    "index.html": "/betting.github.io/index.html",
+    "precache-manifest.2c055f1b0ef42abcaa8fc81ac5e44d5c.js": "/betting.github.io/precache-manifest.2c055f1b0ef42abcaa8fc81ac5e44d5c.js",
+    "service-worker.js": "/betting.github.io/service-worker.js",
+    "static/css/main.bb355e88.chunk.css.map": "/betting.github.io/static/css/main.bb355e88.chunk.css.map",
+    "static/js/2.d7eca630.chunk.js.LICENSE.txt": "/betting.github.io/static/js/2.d7eca630.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1950214d.js",
+    "static/js/2.d7eca630.chunk.js",
+    "static/css/main.bb355e88.chunk.css",
+    "static/js/main.ab74891a.chunk.js"
+  ]
+}
