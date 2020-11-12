@@ -1,1 +1,1 @@
-Live: https://rafaldrozdz.github.io/betting.github.io/coupons
+Live: https://rafaldrozdz.github.io/betting.github.io
